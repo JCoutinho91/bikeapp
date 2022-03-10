@@ -4,6 +4,7 @@ import tw from "twin.macro";
 import mainBikeImg from "../../../assets/images/mainbikeimg.png";
 import BlobImg from "../../../assets/images/blob.svg";
 import { SCREENS } from "../../components/Responsive";
+import Button from "../../components/Button";
 
 const TopSectionContainer = styled.div`
   min-height: 400px;
@@ -132,6 +133,14 @@ const StandAloneBike = styled.div`
   }
 `;
 
+const ButtonsContainer = styled.div`
+  ${tw`
+  flex
+  flex-wrap
+  mt-4
+`}
+`;
+
 function TopSection() {
   return (
     <TopSectionContainer>
@@ -142,6 +151,10 @@ function TopSection() {
           best price for you to get the best quality bicycles for as long as you
           like
         </Description>
+        <ButtonsContainer>
+          <Button theme="outlined" text="Rent your Bike" />
+          <Button theme="filled" text="Book your Ride" />
+        </ButtonsContainer>
       </LeftContainer>
       <RightContainer>
         <BlobContainer>
