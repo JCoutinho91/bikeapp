@@ -156,7 +156,7 @@ function BookCard() {
         )}
       </ItemContainer>
       <Marginer direction="horizontal" margin="2em" />
-      <Button theme="filled" text="Book Your Ride" />
+      <Button theme="filled" text="Book Your Ride" className="className" />
     </CardContainer>
   );
 }

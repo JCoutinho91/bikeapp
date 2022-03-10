@@ -152,8 +152,12 @@ function TopSection() {
           like
         </Description>
         <ButtonsContainer>
-          <Button theme="outlined" text="Rent your Bike" />
-          <Button theme="filled" text="Book your Ride" />
+          <Button
+            theme="outlined"
+            text="Rent your Bike"
+            className="className"
+          />
+          <Button theme="filled" text="Book your Ride" className="className" />
         </ButtonsContainer>
       </LeftContainer>
       <RightContainer>
