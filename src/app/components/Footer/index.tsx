@@ -6,17 +6,38 @@ import tw from "twin.macro";
 import Logo from "../Logo";
 
 const FooterContainer = styled.div`
-  min-height: 24em;
   background-color: #1d2124;
   ${tw`
     flex
+    flex-col
     min-w-full
     pt-4
-    md:pt-12
+    pt-10
+    md:pt-16
     pt-10
     items-center
     justify-center
 `};
+`;
+
+const BottomContainer = styled.div`
+  ${tw`
+    w-full
+    flex
+    max-w-screen-2xl
+    justify-center
+    md:justify-start
+    justify-start
+    mt-7
+    md:mt-1
+`}
+`;
+
+const CopyRightText = styled.small`
+  font-size: 12px;
+  ${tw`
+      text-gray-300
+`}
 `;
 
 const InnerContainer = styled.div`
@@ -25,6 +46,7 @@ const InnerContainer = styled.div`
     w-full
     h-full
     max-w-screen-2xl
+    flex-wrap
 `}
 `;
 
@@ -33,7 +55,11 @@ const AboutContainer = styled.div`
     flex
     flex-col
     mr-2
-    md:mr-10
+    md:mr-16
+    pl-10
+    pr-10
+    md:pl-3
+    md:pr-3
 
 `}
 `;
@@ -52,10 +78,18 @@ const AboutText = styled.p`
 
 const SectionContainer = styled.div`
   ${tw`
+    w-full
+    md:w-auto
     flex
     flex-col
     mr-2
     md:mr-16
+    pl-10
+    pr-10
+    md:pl-3
+    md:pr-3
+    mt-6
+    md:mt-0
 `}
 `;
 
@@ -186,6 +220,12 @@ function Footer() {
           </HorizontalContainer>
         </SectionContainer>
       </InnerContainer>
+      <BottomContainer>
+        <CopyRightText>
+          Copyright &copy; {new Date().getFullYear()} BiciRent. All rights
+          reserved
+        </CopyRightText>
+      </BottomContainer>
     </FooterContainer>
   );
 }
