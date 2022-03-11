@@ -5,6 +5,8 @@ import { IBike } from "../../../typings/bikes";
 import Bikes from "../../components/bikes";
 import Carousel, { Dots, slidesToShowPlugin } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
+import { useMediaQuery } from "react-responsive";
+import { SCREENS } from "../../components/Responsive";
 
 const bike1: IBike = {
   thumbnailSrc:
@@ -64,8 +66,20 @@ const BikesContainer = styled.div`
 `}
 `;
 
+const bikes = [
+  <Bikes {...bike1} />,
+  <Bikes {...bike2} />,
+  <Bikes {...bike2} />,
+  <Bikes {...bike1} />,
+  <Bikes {...bike1} />,
+];
+
 function TopBikes() {
   const [current, setCurrent] = useState(0);
+
+  const isMobile = useMediaQuery({ maxWidth: SCREENS.sm });
+
+  const numberOfDots = isMobile ? bikes.length : Math.ceil(bikes.length / 3);
 
   return (
     <TopBikesContainer>
@@ -74,13 +88,7 @@ function TopBikes() {
         <Carousel
           value={current}
           onChange={setCurrent}
-          slides={[
-            <Bikes {...bike1} />,
-            <Bikes {...bike2} />,
-            <Bikes {...bike2} />,
-            <Bikes {...bike1} />,
-            <Bikes {...bike1} />,
-          ]}
+          slides={bikes}
           plugins={[
             "clickToChange",
             {
@@ -90,8 +98,30 @@ function TopBikes() {
               },
             },
           ]}
+          breakpoints={{
+            640: {
+              plugins: [
+                {
+                  resolve: slidesToShowPlugin,
+                  options: {
+                    numberOfSlides: 1,
+                  },
+                },
+              ],
+            },
+            900: {
+              plugins: [
+                {
+                  resolve: slidesToShowPlugin,
+                  options: {
+                    numberOfSlides: 2,
+                  },
+                },
+              ],
+            },
+          }}
         />
-        <Dots value={current} onChange={setCurrent} number={2} />
+        <Dots value={current} onChange={setCurrent} number={numberOfDots} />
       </BikesContainer>
     </TopBikesContainer>
   );

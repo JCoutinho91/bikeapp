@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import LogoImg from "../../../assets/images/bikeLogo.jpg";
+import LogoImg from "../../../assets/images/bikeLogo.png";
+
+interface ILogoProps {
+  color?: "white" | "dark";
+}
 
 const LogoContainer = styled.div`
   ${tw`
@@ -18,8 +22,9 @@ const LogoText = styled.div`
     font-bold
     text-black
     m-1
-`}
-`;
+    `}
+  ${({ color }: any) => (color === "white" ? tw`text-white` : tw`text-black`)}
+` as any;
 
 const Image = styled.div`
   width: auto;
@@ -32,13 +37,14 @@ const Image = styled.div`
     height: 100%;
   }
 `;
-function Logo() {
+function Logo(props: ILogoProps) {
+  const { color } = props;
   return (
     <LogoContainer>
       <Image>
         <img src={LogoImg} />
       </Image>
-      <LogoText>BiciRent.</LogoText>
+      <LogoText color={color || "dark"}>BiciRent.</LogoText>
     </LogoContainer>
   );
 }
